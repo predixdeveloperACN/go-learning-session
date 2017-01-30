@@ -1,0 +1,36 @@
+
+// Packages are just folders that contain .go files
+// They usually serve as function libraries.
+//
+// NOTE: Package names CANNOT have any capital letters, spaces, or special characters.
+//       CamelCasing is NOT recommended.
+//       Write all words as one word (e.g. studentutils).
+//
+// Beginning with upper case means Public.
+// Beginning with lower case means Private.
+//
+// Anything Public can be used by importers of a Package.
+// Anything Private can only be used within the Package -- this goes for Private fields as well.
+//
+// -------------------------------------------
+
+// Importing packages one by one:
+
+     import "fmt"
+     import "strings"
+     import "bytes"
+
+// Importing multiple packages at once:
+// (NOTE: This is the recommended approach, even for single imports)
+
+     import (
+         "fmt"
+         "strings"
+         "bytes"
+     )
+
+// Importing online packages:
+
+    import (
+        "golang.org/x/tools/container/intsets"
+    )

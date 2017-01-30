@@ -1,0 +1,262 @@
+
+Go Programming Language Homepage
+-- Download Golang; also contains tutorials, helpful tips and documentations
+|
+golang.org
+
+Tour of the Go Programming Language:
+|
+https://tour.golang.org/welcome/1
+
+Short examples and explanations of most Go features:
+|
+gobyexample.com
+
+Similar site to the one above:
+|
+https://www.dotnetperls.com/go
+
+List of common problems new Developers encounter in Go:
+|
+http://devs.cloudimmunity.com/gotchas-and-common-mistakes-in-go-golang/
+
+Documentation of Go's built-in functionalities:
+|
+http://golang.org/pkg/builtin/
+
+The Go Playground
+-- Only recommended if you're testing SMALL blocks of code
+-- It's always November 10, 2009, 11:00 PM (Golang's launch date) in the playground
+-- You will always get the same sequence of random numbers in the playground
+|
+play.golang.org
+
+----------------------------------------
+
+REST & Web API links:
+
+Gorilla
+http://www.gorillatoolkit.org/
+
+Beego
+http://beego.me
+
+Martini
+http://martini.codegangsta.io/
+
+Gocraft
+https://github.com/gocraft/web
+
+Revel
+https://revel.github.io/
+
+----------------------------------------
+
+Go can be described as an "Object-less" Object-Oriented Language.
+While it lacks certain OOP features seen in languages like Java and C#,
+it has different features that enable it be used like one -- which, in some cases, make it a cleaner OOP language.
+
+Go is not suited for overly large, complex projects.
+It is best suited for small, concise projects, like Web Services and Microservices.
+
+There are NO Classes -- only Structs.
+
+There is NO Inheritance (because there are no Classes).
+
+There is NO Method and Operator overloading.
+
+There is NO Implicit Conversion. Everything NEEDS to be explicit.
+
+There is NO Exception Handling (like Try Catch) -- Go expects you to make your own Errors or use existing ones
+and then handle them accordingly. If you don't handle errors, you might get scenarios where your application will
+either crash with no helpful information or continue to run but not produce your expected results.
+
+Go HATES unused code. It will throw an error if you have any unused imports and variables in your "main" Package.
+However, it is okay to have unused Functions in any Package, including the main Package.
+
+Go is case-sensitive.
+
+Go ALWAYS uses short-circuit evaluation.
+
+Initial upper-case letters means Public.
+Initial lower-case letters means Private.
+
+Privacy in Go only works on the Package level.
+Anything Private can't be used by Importers of a Package.
+However, anything Private can *STILL* be used within the Package itself -- including Private Struct Fields.
+
+Functions in Go can return more than 1 result.
+
+Go does not need semicolons (they're automatically added at compile time, behind the scenes).
+However, you need to be careful about separating your code into multiple lines.
+
+Because Go automatically adds semicolons for you behind the scenes,
+the beginning brace MUST be on the first line of the block, NOT on the next:
+
+    Correct:
+
+         If a > b {
+             //your code here
+         }
+
+    Incorrect:
+
+         If a > b
+         {
+             //your code here
+         }
+
+Also, if you're enclosing one or more elements in braces, you MUST adhere to either of the following:
+
+    If the closing brace is not on the same line as the last element,
+    you NEED to add a trailing comma to the last element:
+
+    slice1 := [][]int {
+        []int{0,0,0},
+        []int{0,0,0},  <-- the last comma is required
+    }
+
+    If the closing brace is on the same line as the last element, no trailing comma is required:
+
+    board1 := [][]int{
+        []int{0,0,0},
+        []int{0,0,0}}  <-- no comma needed
+
+Some helpful Intellij IDEA Shortcuts:
+
+    Coding:
+        Ctrl + B           -- Go to Definition/Declaration
+        Ctrl + Alt + Left  -- Back
+        Ctrl + Alt + Right -- Forward
+        Ctrl + /           -- Toggle Comment (Note: First, highlight a portion of the line to enable Toggle feature)
+        Ctrl + Z           -- Undo
+        Ctrl + Shift + Z   -- Redo
+        Shift + F6         -- Refactor/Rename
+        Alt + F7            -- Find All References
+        Ctrl + Shift + F    -- Search All Files
+        F11                 -- Toggle Bookmark
+        Click Left of Code  -- Toggle Breakpoint
+
+    Debugging:
+        F7         -- Step Into
+        F8         -- Step Over
+        Shift + F8 -- Step Out
+        F9         -- Continue Execution
+
+----------------------------------------
+
+Debugging multi-file Go programs in Intellij IDEA
+
+In the real world, your Go project will only have 1 entry point (you only have 1 file that contains your main Function),
+and you have your other code in other .go files somewhere within your project folder.
+
+You can't Debug (or even Run) multi-file Go programs in Intellij IDEA out of the box.
+
+We need to make a custom configuration ourselves:
+
+    1. Go to Run > Edit Configurations.
+
+    2. Click the Green Plus Sign (+) on the top left corner of the window and select "Go Application".
+
+    3. Give it a Name, like "Build and Run".
+
+    4. Change the "Run kind" from "File" to "Package".
+
+    5. The Package field should now have your Project's folder name.
+
+    6. Click OK.
+
+Now, to actually Run your application:
+
+    1. Go to Run > Run...
+       (NOTE: Or hit Alt + Shift + F10)
+
+    2. When prompted, choose "Build and Run".
+
+NOTE: You will need to do this for EVERY Application you want to run as a whole, instead of one file at a time.
+
+-------------
+
+Debugging multiple Single-File Go programs in Intellij IDEA
+
+When working with multiple Go files in one project, each with their own main functions
+(like when prototyping in a test package), Intellij IDEA will disable the Debug option
+once it encounters any Compile errors during execution by default.
+
+To always enable the Debug option, make a Custom Configuration that points to a specific file by doing the following:
+
+        Set "Run kind" to "File"
+
+        Set "File" to the filepath (including the filename) of your Go file.
+
+----------------------------------------
+
+Miscellaneous:
+
+You can configure the Tab Size for IntelliJ IDEA by going to File > Settings > Code Style > Your_Specific_Language
+
+-------------
+
+To enable Ctrl + Mouse Wheel to Zoom In/Out, go to File > Settings > Editor > General > Mouse
+and put a Check on "Change font size (Zoom) with Ctrl+Mouse Wheel"
+
+-------------
+
+To reset IntelliJ IDEA to factory defaults, go to:
+
+     C:\Users\YOUR_USER_NAME\.IdeaIC2016.3
+
+And delete the "config" folder
+
+-------------
+
+Open Last Project
+
+    By Default, Intellij IDEA will always start with the last Project you were working on.
+
+    If you don't want to start with the last Project you were working on, go to File > Close Project before closing Intellij IDEA.
+
+-------------
+
+Optimize Import Statements
+
+    To clean your Imports, simply delete the Import statement you have at the top of your code.
+
+    Intellij IDEA will automatically populate all the needed Imports for you.
+
+-------------
+
+Navigating Your Code
+
+    After setting Bookmarks/Breakpoints, open the Favorites Tab (the one with the Star Icon) on the lower-left corner of the screen.
+
+    In this tab, you can expand the Bookmarks and Breakpoints views and double-click on each item to go to that line of code.
+
+    You can also Delete Bookmarks and Breakpoints with the Minus Icon (-) or the Delete key.
+    To delete multiple items, highlight them with Shift + Click.
+
+-------------
+
+TODO's
+
+    To make a TODO list, simply begin a comment like so:
+
+        // TODO
+
+    Then, you can type any reminders you like so you won't forget them:
+
+        // TODO: Implement Handler for updating Flight Numbers.
+
+    You can Navigate to your TODO's by going to the TODO tab on the bottom of the screen and double-clicking on any item.
+
+-------------
+
+Auto-format your Go Code
+
+    To use Go's built-in formatting (proper Tabs, Spaces, etc.), right-click anywhere on your code and go to:
+
+        Go tools > Go fmt file
+
+    Or:
+
+        Go tools > Go fmt project

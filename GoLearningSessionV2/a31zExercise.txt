@@ -1,0 +1,92 @@
+Try it yourself! (1 Hr)
+        
+    Create a function that accepts 2 strings, and returns nothing.
+
+    The first string is only allowed to be either a, b, or c (non-case-sensitive).
+    If the given string is not allowed, print this message:
+
+        Invalid option! Please select one of the following options: a, b, or c
+
+    Only evaluate the second string if the first string is one of our valid letters.
+
+    The second string can be any number from 0 to 10. If the given string is not a number, print this message:
+
+        Given number is not a number! Please supply a valid number from 0 to 10.
+
+    If the given string is less than 0, print the following message:
+
+        Given number is too small! Please supply a valid number from 0 to 10.
+
+    If the given string is larger than 10, print the following message:
+
+        Given number is too large! Please supply a valid number from 0 to 10.
+
+    Depending on the letter supplied, do the following:
+
+        SAMPLE OUTPUTS:
+
+            a: (Double the given number)
+                4 doubled is 8
+
+            b: (Raise the given number to the power of 2)
+                7 to the power of 2 is 49
+
+            c: (Print out words from "zero" up to the second parameter)
+                zero, one, two, three, four, five, six, seven, eight!
+
+    In your main function, call your function 7 times and pass these parameters:
+
+        a, 3
+        B, 4
+        c, 5
+        d, 6
+        a, a
+        b, -2
+        C, 21
+
+    You should see the following output:
+
+        3 doubled is 6
+        4 to the power of 2 is 16
+        zero, one, two, three, four, five!
+        Invalid option! Please select one of the following options: a, b, or c
+        Given number is not a number! Please supply a valid number from 0 to 10.
+        Given number is too small! Please supply a valid number from 0 to 10.
+        Given number is too large! Please supply a valid number from 0 to 10.
+
+---------------------------------------------
+
+    Create a string variable that will hold a sentence (e.g. "The lazy dog is asleep")
+
+    Pass that variable to a function that will reverse the words and print the result.
+
+        SAMPLE OUTPUT:
+
+            asleep is dog lazy The
+
+    HINT: There is a built-in function called strings.Fields that stores words (separated by whitespace) into a string slice.
+
+---------------------------------------------
+
+    Create a map of String keys and Int values. Give it the following key-value pairs:
+
+        "Banana"    : 14
+        "Apple"     : 12
+        "Orange"    : 15
+        "Pineapple" : 14
+
+    Print the map Sorted by Value in Ascending order.
+
+        OUTPUT:
+
+            Apple, 12
+            Banana, 14
+            Pineapple, 14
+            Orange, 15
+
+        HINT:
+
+            1. Maps can hold Slices as values.
+
+            2. Remember that to operate on maps in a Sorted fashion, you need to use a separate collection (like a Slice)
+               to access the map in the order you want.

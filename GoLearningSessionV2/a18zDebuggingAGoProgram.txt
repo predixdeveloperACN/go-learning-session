@@ -1,0 +1,8 @@
+
+Let's use our previous lab activity to demonstrate how to Debug Go programs with Intellij IDEA.
+
+Debugging:
+    F7         -- Step Into
+    F8         -- Step Over
+    Shift + F8 -- Step Out
+    F9         -- Continue Execution

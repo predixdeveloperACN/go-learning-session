@@ -1,0 +1,78 @@
+
+"make" allocates AND initializes memory (it returns Allocated Objects),
+so it is ready to accept values.
+However, it only works for Slices, Maps, and Channels.
+
+    make()
+
+SIGNATURE:
+
+    func make(Type, size IntegerType) Type
+
+    The "make" built-in function allocates and initializes an object of type slice, map, or chan (only).
+    Like new, the first argument is a type, not a value.
+    Unlike new, make's return type is the same as the type of its argument, not a pointer to it.
+    The specification of the result depends on the type:
+
+    Slice: The size specifies the length. The capacity of the slice is equal to its length.
+           A second integer argument may be provided to specify a different capacity;
+           it must be no smaller than the length, so "make([]int, 0, 10)"" allocates a
+           slice of length 0 and capacity 10.
+
+    Map: An initial allocation is made according to the size but the resulting map
+         has length 0. The size may be omitted, in which case a small starting size
+         is allocated.
+
+    Channel: The channel's buffer is initialized with the specified buffer capacity.
+             If zero, or the size is omitted, the channel is unbuffered.
+
+EXAMPLES:
+
+    s1 := make([]int, 3, 10)    <-- slice of Ints, initial size: 3, capacity: 10
+
+    m1 := make(map[string]int)  <-- map of String keys and Int values
+
+    ch1 := make(chan int)       <-- channel of Ints
+    ch2 := make(chan int, 3)    <-- channel of Ints, buffer: 3
+
+==================================================================================
+
+"new" Allocates memory but does NOT initialize it (it returns Pointers),
+so it can't accept values yet.
+
+    new()
+
+SIGNATURE:
+
+    func new(Type) *Type
+
+    The "new" built-in function allocates memory.
+    The first argument is a type, not a value, and the value returned is
+    a pointer to a newly allocated zero value of that type.
+
+    "new" is rarely used and is the subject of much debate among Go programmers
+    (whether it should be removed or not in future versions of Go).
+
+    I have yet to find a good example of an action you can only perform with "new".
+
+EXAMPLES:
+
+    v := new(int)  <-- create an Int Pointer and add to it.
+    *v++
+    fmt.Println(*v)
+
+    +++++
+
+    type Student struct {  <-- using "new" like in C# and Java
+        Name string
+        Age int
+    }
+
+    s := new(Student)
+    s.Name = "Dave"
+    s.Age = 10
+
+    fmt.Println(s.Name, s.Age)
+    |
+    OUTPUT:
+    Dave 10

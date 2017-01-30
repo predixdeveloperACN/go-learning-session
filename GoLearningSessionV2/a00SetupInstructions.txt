@@ -1,0 +1,166 @@
+
+NOTE 1: The following installations can be performed with just the Default options.
+
+NOTE 2: You can only Debug Go Programs in 64-bit environments.
+        You can, however, still run your code in 32-bit environments.
+        Also, you MUST uninstall previous versions of Go before installing new ones.
+
+Install the correct version of Go for your machine from:
+|
+Online:
+    https://golang.org/dl/
+Shared:
+    \\10.241.188.72\aops\Ex-Geneva Team Backups\Vince\misc\Go Environment Setup
+    - go1.7.4 64-bit.msi or go1.7.4 32-bit.msi
+
+Install the community version of IntelliJ IDEA from:
+|
+Online:
+    https://www.jetbrains.com/idea/#chooseYourEdition
+Shared:
+    \\10.241.188.72\aops\Ex-Geneva Team Backups\Vince\misc\Go Environment Setup
+    - ideaIC-2016.3.exe
+    
+Install Git-SCM from:
+|
+Online:
+    https://git-scm.com/download/win
+Shared:
+    \\10.241.188.72\aops\Ex-Geneva Team Backups\Vince\misc\Go Environment Setup
+    - Git-2.11.0-64-bit.exe or Git-2.11.0-32-bit.exe
+    
+==================================================
+
+Go Setup:
+
+Right-click on My Computer, select Properties > Advanced System Settings > Advanced > Environment Variables
+
+Under User Variables, add a New Variable:
+
+    NOTE: The Variable Value you supply MUST be a path that exists on your machine.
+          This is the folder where you will place ALL of your Go code.
+
+     Variable Name: GOPATH
+     Variable Value: D:\VinceGo  <--sample value
+
+Create 3 folders inside your GOPATH folder:
+     1. bin
+     2. pkg
+     3. src
+
+Also under User Variables, edit the Path variable and add the location of your bin folder inside your GOPATH folder:
+
+NOTE: Be sure to separate your new entry from existing ones (if any) with a semicolon (;).
+
+     e.g.
+     D:\SamplePath1;D:\SamplePath2;D:\VinceGo\bin
+
+Restart any open CMD windows if you have any.
+    
+==================================================
+
+Go Debugger Setup:
+
+In CMD Admin Mode, run:
+
+     go get github.com/derekparker/delve/cmd/dlv
+
+NOTE: If you encounter any fatal errors, just keep retrying the command until it completes successfully.
+      The error is most likely your connection to Github being blocked by your network.
+
+Restart your chosen Go IDE for changes to take effect.
+If you still can't Debug Go, restart your PC.
+    
+==================================================
+
+Go Setup for IntelliJ IDEA:
+
+1. Open IntelliJ IDEA and choose Configure > Plugins > Browse Repositories
+
+2. Type "Go" in the textbox and look for the one that has "LANGUAGES" under it and
+   whose Details on the right hand side of the window contains "https://github.com/go-lang-plugin-org".
+
+3. Install the Plugin and Restart IntelliJ IDEA.
+
+4. Create a New Project and select Go from the options on the left hand side.
+
+5. Click Next > Configure...
+
+6. The directory should detect your Go setup and point to "C:\Go".
+   If not, manually select that directory, set it as Default, and click OK.
+
+7. Click Next, then either select an existing folder inside your Go Root's "src" folder, or create a new one.
+   Lastly, type in a Project Name, and click Finish.
+
+==================================================
+
+Simple Hello World Application in IntelliJ IDEA:
+
+1. Inside your project, create a new .go file and name it "hello.go"
+
+2. Inside "hello.go", paste in the following code:
+
+     package main
+
+     import "fmt"
+
+     func main() {
+         fmt.Println("Hello, world!")
+     }
+
+3. To run our test program, you can either click the green Play button on the top right hand side of the screen,
+   or click on the green Play button on the left side of your "func main".
+
+   If a prompt appears on the top left hand side of the screen, select "Go Single File".
+
+   You should now see "Hello, world!" on the Run tab at the bottom of the screen.
+
+==================================================
+
+NOTE: The following Section is not needed to use Go with Intellij IDEA.
+      This is for Github-related purposes only (e.g. Cloning Repositories, etc.)
+
+Github Setup for Cloning Public Packages:
+
+Open Git Bash and enter the following:
+
+    mkdir ~/.ssh
+    
+    cd ~/.ssh
+    
+    ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+    
+Press Enter when prompted to Enter a file to save the key.
+    
+Next, type a secure passphrase.
+Make sure to REMEMBER this passphrase since the Github Client will ask for this!
+    
+Afterwards, type the following commands:
+
+    eval "$(ssh-agent -s)"
+    
+    ssh-add ~/.ssh/id_rsa
+    
+You will be prompted to enter your secure passphrase.
+
+Type the following command to copy your SSH Key to your Clipboard:
+
+    clip < ~/.ssh/id_rsa.pub
+    
+Go to github.com, click on your Photo and select Settings.
+
+In the user settings sidebar, click SSH and GPG keys.
+
+Click New SSH key.
+
+Type in any Title you want (e.g. SSH Key for Work) and paste your key in the box below.
+
+Click Add SSH key.
+
+Back in Git Bash, type the following commands and wait each one to finish:
+
+    go get github.com/gorilla/mux
+    
+    go get github.com/tools/godep
+    
+Verify that the "godep" package exists in the "src" folder inside your GOPATH.

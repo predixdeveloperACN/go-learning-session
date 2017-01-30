@@ -1,0 +1,44 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;GoLearningSession&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../redis-5" />
+      <root url="file://$PROJECT_DIR$/../GoLearningSessionExercises" />
+      <root url="file://$PROJECT_DIR$/../lib" />
+      <root url="file://$PROJECT_DIR$/../GoJSONEditor" />
+      <root url="file://$PROJECT_DIR$/../gorilla" />
+      <root url="file://$PROJECT_DIR$/../samplepkg1" />
+      <root url="file://$PROJECT_DIR$/../radix.v2-master" />
+      <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../samplepkg2" />
+      <root url="file://$PROJECT_DIR$/../restfulJSONapi" />
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../samplepkg3" />
+      <root url="file://$PROJECT_DIR$/../postgresJerome" />
+      <root url="file://$PROJECT_DIR$/../sourcegraph.com" />
+      <root url="file://$PROJECT_DIR$/../nonBlockingChannel" />
+      <root url="file://$PROJECT_DIR$/../GoLearningSessionAddendums" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../redis-5" />
+      <root url="file://$PROJECT_DIR$/../GoLearningSessionExercises" />
+      <root url="file://$PROJECT_DIR$/../lib" />
+      <root url="file://$PROJECT_DIR$/../GoJSONEditor" />
+      <root url="file://$PROJECT_DIR$/../gorilla" />
+      <root url="file://$PROJECT_DIR$/../samplepkg1" />
+      <root url="file://$PROJECT_DIR$/../radix.v2-master" />
+      <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../samplepkg2" />
+      <root url="file://$PROJECT_DIR$/../restfulJSONapi" />
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../samplepkg3" />
+      <root url="file://$PROJECT_DIR$/../postgresJerome" />
+      <root url="file://$PROJECT_DIR$/../sourcegraph.com" />
+      <root url="file://$PROJECT_DIR$/../nonBlockingChannel" />
+      <root url="file://$PROJECT_DIR$/../GoLearningSessionAddendums" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>

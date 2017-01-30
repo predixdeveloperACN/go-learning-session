@@ -1,0 +1,50 @@
+Try it yourself! (0.5 Hrs)
+
+    Create a Student interface, which implements the following functions:
+        Enroll -- accepts a string, returns an error object
+
+    Create 3 Structs that have the following fields:
+        ElementarySchooler, HighSchooler and CollegeStudent
+            Name  : string
+            Age   : int
+            School: string
+
+    For each Struct, create an Enroll function that matches the function signature in the Student interface.
+
+    For all 3 Structs, their Enroll function will change their School to the given string. However, there are some slight differences:
+
+        For ElementarySchooler, the School will have the word "Elementary" added.
+        For HighSchooler, the School will have the word "High" added.
+        For CollegeStudent, the School will have the word "University" added.
+
+    The following behavior of the Enroll function will be the same for all 3 Structs:
+
+        If the given string contains any numbers, return an error string that says:
+
+            "School name cannot contain any numeric characters!"
+
+        Otherwise, print a message in the following format:
+
+            Struct.Name, age Struct.Age, enrolled at Struct.School + School_Suffix
+
+            Example:
+                "Oliver, age 9, enrolled at Washington Elementary."
+
+    In your main function, use a slice of Students to create 4 objects -- 1 for each Struct you created
+    (the 4th one can be any of the 3 Structs), and populate the Name and Age fields only.
+
+    Using the Student interface type, loop over your 4 objects and Enroll them to any school you like
+    (use the same string for the first 3 calls to the Enroll function (e.g. "Washington"),
+    but for the 4th call, add a number within the string (e.g. "Wash1ngton")), and
+    Print the Output or any Errors for each Student afterwards.
+
+        SAMPLE OUTPUT:
+
+            Oliver, age 9, enrolled at Washington Elementary.
+            Emily, age 14, enrolled at Washington High.
+            Sophia, age 20, enrolled at Washington University.
+            School name cannot contain any numeric characters!
+
+    HINT:
+
+        1. You can loop over strings with "range". With this, you can check each character in a string!

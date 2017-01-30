@@ -1,0 +1,55 @@
+
+////////////////////////////////////////////
+//
+//           Basic operators:
+//
+////////////////////////////////////////////
+
++     // Add
+-     // Subtract
+*     // Multiply
+/     // Divide
+%     // Modulo (Get Remainder)
+
+
+////////////////////////////////////////////
+//
+//          Conditional operators:
+//
+// NOTE: Go ALWAYS uses short-circuit evaluation.
+//
+////////////////////////////////////////////
+
+&&    // AND
+||    // OR
+
+
+////////////////////////////////////////////
+//
+//   The following only apply to integers:
+//
+////////////////////////////////////////////
+
+&     // Bitwise AND
+|     // Bitwise OR
+^     // Bitwise XOR
+
+&^    // Bit clear
+<<    // Left shift
+>>    // Right shift
+
+
+////////////////////////////////////////////
+//
+//                 Casting
+//
+////////////////////////////////////////////
+
+// Again, there is NO implicit conversion in Go.
+// Explicit Casting is REQUIRED, otherwise you'll get an error.
+
+// cast float to int
+int(float1)
+
+// cast int to float64
+float64(int1)

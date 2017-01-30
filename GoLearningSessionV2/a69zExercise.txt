@@ -1,0 +1,61 @@
+Try it yourself! (1 Hr)
+
+    Create a burger Restaurant that will serve hamburgers to 15 customers.
+
+    An Order will have:
+        FoodName (set it to "hamburger" for all 15 customers),
+        OrderID (that matches the OrderID of the Customer that made the Order).
+
+    Each Customer will have:
+        Name
+        OrderID (so we can keep track of which customer owns which Order)
+        Order (a field of type Order struct)
+
+    The Restaurant will the following staff members:
+        a) 2 Cashiers (has a Name field). Each Cashier will take a Customer from Channel1 and add their Order to Channel2.
+        b) 3 Cooks (has a Name field). Each Cook will check Channel2, cook the food, and add the Order to Channel3.
+        c) 1 Waiter (has a Name field). The waiter will check Channel3 and serve the Order to the Customer with the matching OrderID.
+
+            SAMPLE OUTPUT:
+
+                Cashier #1 takes Gary's order: Hamburger 1
+                Cook #1 makes: Hamburger 1
+                Waiter #1 serves Hamburger 1 to Gary
+
+            After serving all 15 customers, print the message:
+
+                The restaurant is now closed!
+
+    Now, to simulate an expensive task, the following Functions will sleep for a certain amount of time:
+
+        Cashier's "TakeOrder" function  -- sleep for 1 second.
+        Cook's "CookFood" function      -- sleep for 5 seconds.
+        Waiter's "ServeFood" function   -- sleep for 3 seconds.
+
+    Since this is the last exercise for the session, students are free to use any Go feature they want
+    to make implementation easier and more efficient.
+
+    HINT:
+
+        1. You will need to make use of AT LEAST the following for this exercise:
+
+            a) Slices
+            b) Structs
+            c) Goroutines
+            d) Channels
+            e) Channel Buffers
+            f) Select
+
+        2. A function that will both Receive from and Send to a channel will have the following signature:
+
+               func MyFunction(in <-chan Data_Type, out chan<- Data_Type)
+
+           Here's a sample implementation of the Cashier's TakeOrder function. Feel free to add your own code to it:
+
+                // Takes a Customer from customerChan, gets their Order, and adds it to orderChan.
+                func (c Cashier) TakeOrder(in <-chan Customer, out chan<- Order) {
+                    for customer := range in {
+                        time.Sleep(time.Second)
+                        out <- customer.Order
+                    }
+                }

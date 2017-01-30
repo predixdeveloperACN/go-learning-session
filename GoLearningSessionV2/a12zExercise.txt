@@ -1,0 +1,13 @@
+Try it yourself! (0.5 Hrs):
+
+    Create a function that takes no arguments, and returns 2 random numbers, ranging from 0-9.
+
+    In your main function, initialize 2 int variables to the return values of your function.
+
+    Print a series of strings using your 2 variables in the following format:
+
+        SAMPLE OUTPUT:
+
+            The first value is 6. The second value is 8.
+            The sum of both values is 14.00
+            14 days from now is February 3, 2017.

@@ -1,0 +1,81 @@
+
+Variable Declaration:
+
+    var str1 string
+
+Multiple Consecutive Declarations:
+
+    var x, y int
+
+Initialization:
+
+    var num1 int = 23
+
+Multiple Consecutive Initializations:
+
+    var i, j int = 1, 2
+
+Implicit Declaration (recommended!):
+NOTE: Implicit declarations will ONLY work inside functions!
+
+    num1 := 123
+    str1 := "The quick brown fox jumped over the lazy dog."
+    isCorrect := true
+    float1 := 23.5
+
+Implicit Consecutive Declarations:
+
+    f1, f2, f3 := 23.5, 65.1, 76.3
+
+Explicit Constants:
+
+    const num2 int = 42
+
+Implicit Constants:
+
+    const str2 = "hello!"
+
+Bundled Declaration:
+
+    var (
+        isCorrect bool       = false
+        maxInt    uint64     = 1<<64 - 1
+        z         complex128 = cmplx.Sqrt(-5 + 12i)
+    )
+
+Implicit Declaration using a Function's Return Value:
+
+    str2 := CombineNames("Bill", "Gates")
+
+----------------------------------------------
+
+Common Go Data Types:
+
+    bool
+    string
+
+    byte
+    uint
+
+NOTE 1: int & uintptr are 64-bit in 64-bit environments, and 32-bit in 32-bit ones:
+
+NOTE 2: "int" in Go has no specified range. It is, however, at LEAST 32 bits in size, which is pretty big.
+        To give you an idea, that's the same size as uint, only with Negative values.
+
+    int        -- at least 32 bits in size
+    uintptr    -- int large enough to hold the bit pattern of any pointer
+
+    uint8      -- 0 to 255
+    int8       -- -128 to 127
+    uint16     -- 0 to 65535
+    int16      -- -32768 to 32767
+    uint32     -- 0 to 4294967295
+    int32      -- -2147483648 to 2147483647
+    uint64     -- 0 to 18446744073709551615
+    int64      -- -9223372036854775808 to 9223372036854775807
+
+    float32    -- set of all IEEE-754 32-bit floating-point numbers.
+    float64    -- set of all IEEE-754 64-bit floating-point numbers.
+
+    complex64  -- set of all complex numbers with float32 real and imaginary parts.
+    complex128 -- set of all complex numbers with float64 real and imaginary parts.
