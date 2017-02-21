@@ -22,3 +22,12 @@ _testmain.go
 *.exe
 *.test
 *.prof
+.idea
+go-learning-session.iml
+GoLearningSessionV2/
+nonBlockingChannel/
+samplepkg1/
+samplepkg2/
+Godeps/
+vendor/
+*.log
