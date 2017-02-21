@@ -1,1 +1,1 @@
-# go-learning-session
+# go-learning-session demo
