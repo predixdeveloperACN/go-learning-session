@@ -6,3 +6,5 @@ type Dog struct {
     Weight int `json:"weight,omitempty"  db:"weight"`
     Height int `json:"height,omitempty"  db:"height"`
 }
+
+

@@ -10,7 +10,7 @@ func main() {
 	fmt.Println("hello world")
 
 	//init Postgres
-	postgres.Open_postgres("user=postgres password=predix dbname=postgres sslmode=disable", "animals")
+	postgres.Open_postgres("user=postgres password=predix dbname=postgres sslmode=disable", "hospital")
 	defer postgres.Database.Close()
 
 	server.SetupServer()

@@ -1,0 +1,334 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Pairing Risk Score Calculator Service API",
+        "description": "Manages pairing risk score calculations."
+    },
+    "tags" : [
+        {
+            "name" : "calculation",
+            "description": "Everything about the calculation"
+        },
+        {
+            "name" : "diagnostic",
+            "description": "For diagnostic purposes"
+        }
+    ],
+    "basePath": "/api/v1",
+    "paths": {
+        "/info": {
+            "get": {
+                "tags" : [ "diagnostic" ],
+                "summary": "Gets run-time information about this service",
+                "description": "Gets run-time information about this service.",
+                "produces": [
+                    "text/plain",
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/ProcessInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/ping": {
+            "get": {
+                "tags" : [ "diagnostic" ],
+                "summary": "Validates that the service is running and responding to requests",
+                "description": "Validates that the service is running and responding to requests. It will also return the last time data was received.",
+                "produces": [
+                    "application/json",
+                    "text/plain"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "description": "Endpoint Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/calc": {
+            "post": {
+                "tags" : [ "calculation" ],
+                "summary": "generates pairing risk score calculation",
+                "description": "generates pairing risk score calculation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "required": true,
+                        "description": "Bearer token containing uaa user scope - the authentication for this user",
+                        "type": "string"
+                    },
+                    {
+                        "name": "inputParam",
+                        "in": "body",
+                        "description": "API input parameter",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/InputParam"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successfully calculated",
+                        "schema": {
+                            "$ref": "#/definitions/ReportResponse"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized - Need to Authenticate"
+                    },
+                    "403": {
+                        "description": "Forbidden - Authentication Invalid"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ProcessInfo": {
+            "type": "object",
+            "description": "This is used primarily for debugging so the data returned can change depending on the need. The data given below should be considered the minimum.",
+            "properties": {
+                "predix-space": {
+                    "type": "string"
+                },
+                "instance-no": {
+                    "type": "integer"
+                },
+                "uptime": {
+                    "type": "number"
+                },
+                "max-go-threads": {
+                    "type": "integer"
+                },
+                "bytesUsed": {
+                    "type": "number"
+                },
+                "bytesAvail": {
+                    "type": "number"
+                }
+            }
+        },
+        "ReportInfo": {
+            "type": "object",
+            "properties": {
+                "pairingId": {
+                    "type": "integer"
+                },
+                "pairingNumber": {
+                    "type": "string"
+                },
+                "LegStartUTC": {
+                    "type": "string"
+                },
+                "isLegDeadHead": {
+                    "type": "boolean"
+                },
+                "connectTimeMins": {
+                    "type": "integer"
+                },
+                "stayWithAcft": {
+                    "type": "boolean"
+                },
+                "isLastLeg": {
+                    "type": "boolean"
+                },
+                "cityPair": {
+                    "type": "string"
+                },
+                "LastLegCityPair": {
+                    "type": "string"
+                },
+                "a0": {
+                    "type": "number"
+                },
+                "missedConnectProb": {
+                    "type": "number"
+                },
+                "canProb": {
+                    "type": "number"
+                },
+                "legRobustnessProb": {
+                    "type": "number"
+                },
+                "schDutyDuration": {
+                    "type": "integer"
+                },
+                "maxDutyDuration": {
+                    "type": "integer"
+                },
+                "dutyMargin": {
+                    "type": "integer"
+                },
+                "restMargin": {
+                    "type": "integer"
+                },
+                "dutyFromLegRobustness": {
+                    "type": "number"
+                },
+                "dutyFailFromLeg": {
+                    "type": "number"
+                },
+                "dutyExceedanceProb": {
+                    "type": "number"
+                },
+                "restExceedanceProb": {
+                    "type": "number"
+                },
+                "dutyRobustnessProb": {
+                    "type": "number"
+                },
+                "robustnessProb": {
+                    "type": "number"
+                },
+                "opDate": {
+                    "type": "string"
+                },
+                "pairOccurences": {
+                    "type": "integer"
+                },
+                "pairLowestLegActualCount": {
+                    "type": "integer"
+                },
+                "legActualCount": {
+                    "type": "integer"
+                },
+                "origin": {
+                    "type": "string"
+                },
+                "dest": {
+                    "type": "string"
+                },
+                "fltNum": {
+                    "type": "string"
+                },
+                "crewBase": {
+                    "type": "string"
+                },
+                "crewComplement": {
+                    "type": "integer"
+                }
+            }
+        },
+        "DateRange": {
+            "type": "object",
+            "required": [ "startDate", "endDate" ],
+            "properties": {
+                "startDate": {
+                    "description": "date on YYYYMMDD format",
+                    "type": "string"
+                },
+                "endDate": {
+                    "description": "date on YYYYMMDD format",
+                    "type": "string"
+                }
+            }
+        },
+        "InputParam": {
+            "type": "object",
+            "required": [ "siteId", "pairingFileId", "dateRange" ],
+            "properties": {
+                "siteId": {
+                    "type": "string"
+                },
+                "pairingFileId": {
+                    "description": "id of the ingested pairing file",
+                    "type": "integer"
+                },
+                "compressed": {
+                    "description": "tabular output",
+                    "type": "boolean",
+                    "default": false
+                },
+                "dateRange": {
+                    "schema": {
+                        "type": "array",
+                        "items" : {
+                            "$ref": "#/definitions/DateRange"
+                        }
+                    }
+                }
+            }
+        },
+        "ReportResponse": {
+            "type": "object",
+            "properties": {
+                "dataRowCount": {
+                    "type": "integer"
+                },
+                "dataRows": {
+                    "schema": {
+                        "type": "array",
+                        "items" : {
+                            "$ref": "#/definitions/ReportInfo"
+                        }
+                    }
+                },
+                "status": {
+                    "schema": {
+                        "$ref": "#/definitions/ReportStatus"
+                    }
+                }
+            }
+        },
+        "ReportStatus": {
+            "type": "object",
+            "properties": {
+                "errorCount": {
+                    "type": "integer"
+                },
+                "errors": {
+                    "schema": {
+                        "type": "array",
+                        "items" : {
+                            "type": "string"
+                        }
+                    }
+                },
+                "warningCount": {
+                    "type": "integer"
+                },
+                "warnings": {
+                    "schema": {
+                        "type": "array",
+                        "items" : {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
