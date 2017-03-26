@@ -2,13 +2,13 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "Pairing Risk Score Calculator Service API",
-        "description": "Manages pairing risk score calculations."
+        "title": "Patient Manager Service",
+        "description": "Keeps patient records."
     },
     "tags" : [
         {
-            "name" : "calculation",
-            "description": "Everything about the calculation"
+            "name" : "patient",
+            "description": "Everything about the patient"
         },
         {
             "name" : "diagnostic",
@@ -17,25 +17,6 @@
     ],
     "basePath": "/api/v1",
     "paths": {
-        "/info": {
-            "get": {
-                "tags" : [ "diagnostic" ],
-                "summary": "Gets run-time information about this service",
-                "description": "Gets run-time information about this service.",
-                "produces": [
-                    "text/plain",
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful response",
-                        "schema": {
-                            "$ref": "#/definitions/ProcessInfo"
-                        }
-                    }
-                }
-            }
-        },
         "/ping": {
             "get": {
                 "tags" : [ "diagnostic" ],
@@ -58,52 +39,52 @@
                 }
             }
         },
-        "/calc": {
+        "/patient": {
             "post": {
-                "tags" : [ "calculation" ],
-                "summary": "generates pairing risk score calculation",
-                "description": "generates pairing risk score calculation",
+                "tags" : [ "patient" ],
+                "summary": "posts patient record for storage",
+                "description": "accepts patient details in JSON form and stores it Postgres db for persistence",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
-                    "application/json"
+                    "text"
                 ],
                 "parameters": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "required": true,
-                        "description": "Bearer token containing uaa user scope - the authentication for this user",
-                        "type": "string"
-                    },
-                    {
-                        "name": "inputParam",
+                        "name": "patient info",
                         "in": "body",
-                        "description": "API input parameter",
+                        "description": "patient details",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/InputParam"
+                            "$ref": "#/definitions/PatientInfo"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successfully calculated",
-                        "schema": {
-                            "$ref": "#/definitions/ReportResponse"
-                        }
+                        "description": "Successfully stored patient data"
                     },
-                    "401": {
-                        "description": "Unauthorized - Need to Authenticate"
-                    },
-                    "403": {
-                        "description": "Forbidden - Authentication Invalid"
-                    },
-                    "400": {
-                        "description": "Bad Request",
+                    "500": {
+                        "description": "Internal Server Error",
                         "schema": {
                             "type": "string"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags" : [ "patient" ],
+                "summary": "returns all patient stored",
+                "description": "returns all patient stored in postgres db",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successfully retrived all patients",
+                        "schema": {
+                            "$ref": "#/definitions/PatientInfos"
                         }
                     },
                     "500": {
@@ -256,78 +237,52 @@
                 }
             }
         },
-        "InputParam": {
+        "PatientInfo": {
             "type": "object",
-            "required": [ "siteId", "pairingFileId", "dateRange" ],
+            "required": ["name","weight","height","age","gender","bustsize","waistsize","hipsize"],
             "properties": {
-                "siteId": {
+                "id": {
+                    "description": "id assigned by DB, cannot be defined by user",
+                    "type": "number"
+                },
+                "name": {
+                    "description": "name of patient",
                     "type": "string"
                 },
-                "pairingFileId": {
-                    "description": "id of the ingested pairing file",
-                    "type": "integer"
+                "weight": {
+                    "description": "weight of patient in pounds",
+                    "type": "number"
                 },
-                "compressed": {
-                    "description": "tabular output",
-                    "type": "boolean",
-                    "default": false
+                "height": {
+                    "description": "height of patient in inches",
+                    "type": "number"
                 },
-                "dateRange": {
-                    "schema": {
-                        "type": "array",
-                        "items" : {
-                            "$ref": "#/definitions/DateRange"
-                        }
-                    }
+                "age": {
+                    "description": "years of age",
+                    "type": "number"
+                },
+                "gender": {
+                    "description": "gender of patient (male/female)",
+                    "type": "string"
+                },
+                "bustsize": {
+                    "description": "bust size in inches",
+                    "type": "number"
+                },
+                "waistsize": {
+                    "description": "waist size in inches",
+                    "type": "number"
+                },
+                "hipsize": {
+                    "description": "hip size in inches",
+                    "type": "number"
                 }
             }
         },
-        "ReportResponse": {
-            "type": "object",
-            "properties": {
-                "dataRowCount": {
-                    "type": "integer"
-                },
-                "dataRows": {
-                    "schema": {
-                        "type": "array",
-                        "items" : {
-                            "$ref": "#/definitions/ReportInfo"
-                        }
-                    }
-                },
-                "status": {
-                    "schema": {
-                        "$ref": "#/definitions/ReportStatus"
-                    }
-                }
-            }
-        },
-        "ReportStatus": {
-            "type": "object",
-            "properties": {
-                "errorCount": {
-                    "type": "integer"
-                },
-                "errors": {
-                    "schema": {
-                        "type": "array",
-                        "items" : {
-                            "type": "string"
-                        }
-                    }
-                },
-                "warningCount": {
-                    "type": "integer"
-                },
-                "warnings": {
-                    "schema": {
-                        "type": "array",
-                        "items" : {
-                            "type": "string"
-                        }
-                    }
-                }
+        "PatientInfos": {
+            "type" : "array",
+            "items": {
+                "$ref": "#/definitions/PatientInfo"
             }
         }
     }

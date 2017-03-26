@@ -1,3 +1,5 @@
+DROP SCHEMA IF EXISTS hospital CASCADE;
+
 CREATE SCHEMA hospital;
 
 CREATE SEQUENCE hospital.patients_seq
@@ -14,9 +16,9 @@ CREATE TABLE hospital.patients (
     height integer,
     age integer,
     gender text,
-    bustSize integer,
-    waistSize integer,
-    hipSize integer
+    bustsize integer,
+    waistsize integer,
+    hipsize integer
 );
 
 ALTER TABLE ONLY hospital.patients

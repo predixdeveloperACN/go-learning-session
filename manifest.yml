@@ -1,7 +1,7 @@
 ---
 applications:
-- name: 502581119-go-learning-session-svc
-  memory: 1G
+- name: 502581119-go-learning-session-svc2
+  memory: 512M
   instances: 1
   disk_quota: 512M
   command: /app/bin/go-learning-session
