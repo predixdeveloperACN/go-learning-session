@@ -31,3 +31,4 @@ samplepkg2/
 Godeps/
 vendor/
 *.log
+storage/postPatient.go
