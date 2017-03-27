@@ -17,10 +17,7 @@ var response_path string
 func SetupServer() {
 	router = mux.NewRouter()
 	router.Methods("GET").Path(base_path  + "ping").HandlerFunc(HandlePing)
-	router.Methods("POST").Path(base_path  + "dog").HandlerFunc(HandleAddDog) // C
 	router.Methods("GET").Path(base_path  + "dogs").HandlerFunc(HandleGetDogs) // R
-	router.Methods("PUT").Path(base_path  + "dog").HandlerFunc(HandleUpdateDog) // U
-	router.Methods("DELETE").Path(base_path  + "dog").HandlerFunc(HandleDeleteDogs) // D
 
 }
 
